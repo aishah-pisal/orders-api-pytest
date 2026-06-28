@@ -27,22 +27,22 @@ Content-Type: application/json
 
 | ID | Type | What it sends | Expected | Automated? |
 |----|------|---------------|----------|------------|
-| TC-001 | Happy path | Valid order with customizations, valid token | 201 Created, order saved | Yes |
+| TC-001 | Positive | Valid order with customizations, valid token | 201 Created, order saved | Yes |
 | TC-002 | Authentication | No `Authorization` header | 401 Unauthorized | Yes |
 | TC-003 | Authentication | Expired or invalid token | 401 Unauthorized | Yes |
 | TC-004 | Validation | Missing required `payment_method_id` | 400 Bad Request | No |
 | TC-005 | Boundary | `quantity` of 0 | 400 Bad Request | No |
 | TC-006 | Customizations | `milk` value not on the allowed list | 400 Bad Request | No |
 | TC-007 | Resource | `product_id` that does not exist | 404 Not Found | No |
-| TC-008 | Business rule | Product is out of stock | 409 Conflict | No |
-| TC-009 | Business rule | Payment is declined by the processor | 402 Payment Required, order not confirmed | No |
+| TC-008 | Business | Product is out of stock | 409 Conflict | No |
+| TC-009 | Business | Payment is declined by the processor | 402 Payment Required, order not confirmed | No |
 | TC-010 | Partial failure | Two items, one out of stock | 409, whole order rejected atomically (nothing charged, no stock changed) | No |
 | TC-011 | Authentication | Valid token attached | 201 Created, request authorised | Yes |
 | TC-012 | HTTP method | GET sent to a POST-only endpoint | 405 Method Not Allowed | Yes |
 
-## Test Groups
+## Test Type
 
-**Happy path (TC-001)** is the baseline: a fully correct request succeeds. Every
+**Positive (TC-001)** is the baseline: a fully correct request succeeds. Every
 other case breaks one thing on purpose.
 
 **Authentication (TC-002, TC-003, TC-011)** covers the three token states: missing,
@@ -55,7 +55,7 @@ value), and constrained fields are checked against an allowed set.
 **Resource (TC-007)** is a well-formed request that names something which does not
 exist. Syntactically fine, semantically wrong.
 
-**Business rules (TC-008, TC-009, TC-010)** are the cases where the request is
+**Business (TC-008, TC-009, TC-010)** are the cases where the request is
 valid but real-world conditions block it. TC-010 is the important one: it checks
 the order is all-or-nothing, so a multi-item order never half-completes.
 
