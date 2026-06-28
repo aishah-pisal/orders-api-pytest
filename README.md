@@ -26,11 +26,11 @@ The order schema under test:
 | Error handling | `test_client_surfaces_error_status` | Client propagates and raises on error responses (401, 404) |
 | HTTP method | `test_get_on_create_endpoint_is_rejected` | Create endpoint is POST-only (GET → 404) |
 
-These four cover the client side: how our code builds the request and handles the
+These four cover the client side: how the code builds the request and handles the
 response. Server-side validation and business rules are out of scope here (Echo
 does not validate), and are documented in
 [`docs/TEST_PLAN_AND_CASES.md`](docs/TEST_PLAN_AND_CASES.md) along with the fuller
-12-case design.
+12-test cases design.
 
 ## Run it
 
@@ -39,12 +39,6 @@ python3 -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 pytest
-```
-
-All tests should pass against Echo. Point at a different host without code changes:
-
-```bash
-ECHO_BASE_URL=https://staging.example.com pytest
 ```
 
 ## Layout
