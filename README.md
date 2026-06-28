@@ -1,4 +1,4 @@
-# Order API tests (Postman Echo)
+# Order API Tests (Postman Echo)
 
 A small pytest + requests suite for an order-creation endpoint, run against a live
 service ([Postman Echo](https://postman-echo.com)) instead of a static mock.
@@ -26,22 +26,11 @@ The order schema under test:
 | Error handling | `test_client_surfaces_error_status` | Client propagates and raises on error responses (401, 404) |
 | HTTP method | `test_get_on_create_endpoint_is_rejected` | Create endpoint is POST-only (GET → 404) |
 
-## Scope: what this does and doesn't test
-
-Echo does not validate the order schema, so this suite tests the **client side**:
-how our own code builds the request and handles the response. Specifically it
-checks that the request is constructed correctly (right method, headers, and JSON
-body), that the body comes back unchanged, that the `Authorization` header is
-attached, and that the client reacts correctly when it gets an error response.
-
-It does **not** test server-side validation, because Echo has none. A real API
-would reject a missing `address` or a non-integer `price`; Echo just reflects back
-whatever you send. The error-handling test does see real 401 and 404 responses,
-but those come from Echo's own endpoints (its auth endpoint and an unknown route),
-not from any check on the order itself.
-
-Keeping these two things apart, what the client does versus what the server
-enforces, is the main design decision here.
+These four cover the client side: how our code builds the request and handles the
+response. Server-side validation and business rules are out of scope here (Echo
+does not validate), and are documented in
+[`docs/TEST_PLAN_AND_CASES.md`](docs/TEST_PLAN_AND_CASES.md) along with the fuller
+12-case design.
 
 ## Run it
 
@@ -65,6 +54,8 @@ ECHO_BASE_URL=https://staging.example.com pytest
 ├── tests/
 │   ├── conftest.py        # base_url, session, valid_payload fixtures
 │   └── test_orders.py
+├── docs/
+│   └── TEST_PLAN_AND_CASES.md   # full 12-case design; 4 are automated here
 ├── requirements.txt
 ├── pytest.ini
 └── .github/workflows/api-tests.yml   # runs pytest on push / PR
