@@ -1,7 +1,7 @@
 # Order API Tests (Postman Echo)
 
 A small pytest + requests suite for an order-creation endpoint, run against a live
-service ([Postman Echo](https://postman-echo.com)) instead of a static mock.
+service ([Postman Echo](https://postman-echo.com)).
 
 The order schema under test:
 
