@@ -1,9 +1,8 @@
 # Test Plan & Cases: `POST /api/orders`
 
-This is the full test design for the order-creation endpoint. It describes what a
+This is the test design for the order-creation endpoint. It describes what a
 real, validating orders API should do. The automated suite in `tests/` covers the
-subset that can be verified against Postman Echo (see "Automated?" below); the rest
-are documented here and would be wired up against a real backend.
+subset that can be verified against Postman Echo (see "Automated?" below).
 
 ## API Request
 
