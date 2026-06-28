@@ -4,7 +4,7 @@ This is the test design for the order-creation endpoint. It describes what a
 real, validating orders API should do. The automated suite in `tests/` covers the
 subset that can be verified against Postman Echo (see "Automated?" below).
 
-## API Request
+## API Endpoint
 
 ```
 POST /api/orders
