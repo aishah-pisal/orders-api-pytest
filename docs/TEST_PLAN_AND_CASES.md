@@ -25,7 +25,7 @@ Content-Type: application/json
 
 ## Test Cases
 
-| ID | Type | What it sends | Expected | Automated? |
+| ID | Type | Request | Expected | Automated? |
 |----|------|---------------|----------|------------|
 | TC-001 | Happy path | Valid order with customizations, valid token | 201 Created, order saved | Yes |
 | TC-002 | Authentication | No `Authorization` header | 401 Unauthorized | Yes |
