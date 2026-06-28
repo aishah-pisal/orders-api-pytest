@@ -28,9 +28,9 @@ Content-Type: application/json
 
 | ID | Type | What it sends | Expected | Automated? |
 |----|------|---------------|----------|------------|
-| TC-001 | Happy path | Valid order with customizations, valid token | 201 Created, order saved | Yes (scenario 1) |
-| TC-002 | Authentication | No `Authorization` header | 401 Unauthorized | Yes (scenario 3) |
-| TC-003 | Authentication | Expired or invalid token | 401 Unauthorized | Yes (scenario 3) |
+| TC-001 | Happy path | Valid order with customizations, valid token | 201 Created, order saved | Yes |
+| TC-002 | Authentication | No `Authorization` header | 401 Unauthorized | Yes |
+| TC-003 | Authentication | Expired or invalid token | 401 Unauthorized | Yes |
 | TC-004 | Validation | Missing required `payment_method_id` | 400 Bad Request | No |
 | TC-005 | Boundary | `quantity` of 0 | 400 Bad Request | No |
 | TC-006 | Customizations | `milk` value not on the allowed list | 400 Bad Request | No |
@@ -38,8 +38,8 @@ Content-Type: application/json
 | TC-008 | Business rule | Product is out of stock | 409 Conflict | No |
 | TC-009 | Business rule | Payment is declined by the processor | 402 Payment Required, order not confirmed | No |
 | TC-010 | Partial failure | Two items, one out of stock | 409, whole order rejected atomically (nothing charged, no stock changed) | No |
-| TC-011 | Authentication | Valid token attached | 201 Created, request authorised | Yes (scenario 2) |
-| TC-012 | HTTP method | GET sent to a POST-only endpoint | 405 Method Not Allowed | Yes (scenario 4) |
+| TC-011 | Authentication | Valid token attached | 201 Created, request authorised | Yes |
+| TC-012 | HTTP method | GET sent to a POST-only endpoint | 405 Method Not Allowed | Yes |
 
 ## Test Groups
 
