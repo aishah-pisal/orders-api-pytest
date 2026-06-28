@@ -40,7 +40,7 @@ Content-Type: application/json
 | TC-011 | Authentication | Valid token attached | 201 Created, request authorised | Yes |
 | TC-012 | HTTP method | GET sent to a POST-only endpoint | 405 Method Not Allowed | Yes |
 
-## Test Groups
+## Test Types
 
 **Happy path (TC-001)** is the baseline: a fully correct request succeeds. Every
 other case breaks one thing on purpose.
