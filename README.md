@@ -32,7 +32,7 @@ does not validate), and are documented in
 [`docs/TEST_PLAN_AND_CASES.md`](docs/TEST_PLAN_AND_CASES.md) along with the fuller
 12-test cases design.
 
-## Run it
+## Run
 
 ```bash
 python3 -m venv .venv
